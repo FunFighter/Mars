@@ -10,17 +10,18 @@ from bs4 import BeautifulSoup
 from splinter import Browser
 import requests as req
 import shutil
-import matplotlib.pyplot as plt
 
 
 # In[2]:
-
-def mars_data_dict():
-
+def init_browser():
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
 
 
+def mars_data_dict():
+
+
+    browser = init_browser()
     # ### Nasa News Data
 
     # In[3]:
