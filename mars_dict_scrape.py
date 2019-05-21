@@ -15,7 +15,7 @@ import shutil
 # In[2]:
 def init_browser():
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    return Browser('chrome', **executable_path, headless=False)
+    return Browser('chrome', **executable_path, headless=True)
 
 
 def mars_data_dict():
@@ -44,12 +44,13 @@ def mars_data_dict():
     # results = soup.find_all('ul',class_="item_list")
 
 
-    # for result in results:
-    title = soup.find('div', class_='content_title').text
+    title_res = soup.find('div', class_='content_title')
+    title = title_res.text 
 
-    body = soup.find('div', class_='article_teaser_body').text
+    body_res = soup.find('div', class_='article_teaser_body')
+    body = body_res.text
 
-    date = soup.find("div", class_="list_date").text
+    # date = soup.find("div", class_="list_date").text
 
 
     # ### Image Data
