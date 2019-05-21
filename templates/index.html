@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Mission</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Vollkorn&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class='header'>
+
+        <h1>
+            Mission to Mars
+        </h1>
+        <button onclick="window.location.href='/scrape'">
+            Update Data
+        </button>
+    </div>
+
+    <div class='main_body'>
+        <div class='left_side'>
+            <h2>
+                Latest Mars News
+            </h2>
+            <h3>
+                {{ mars_data.title }}
+            </h3>
+            <p>
+                {{ mars_data.body }}
+            </p>
+            <div class='big_image'>
+                <img src="{{ mars_data.image }}">
+            </div>
+        </div>
+
+        <div class='current-weather right_side'>
+            <h3>
+                Current Weather on Mars
+            </h3>
+            <p>
+                {{ mars_data.twitter }}
+            </p>
+            <h3 class='table_title'>
+                table
+            </h3>
+            {{ mars_data.table | safe }}
+        </div>
+    </div>
+
+
+    <h2 class='hemi_title'>Hemi Grid</h2>
+    <div class='picture_grid'>
+        <div class='image_case'>
+            <img class='grid_img' src="{{ mars_data['hemisphere'][0]['img_url'] }}">
+
+            <p class='grid_img'>
+                {{ mars_data.hemisphere[0].title}}
+            </p>
+        </div>
+        <div class='image_case'>
+            <img class='grid_img' src="{{ mars_data.hemisphere[1].img_url }}">
+            <p class='grid_img'>
+                {{ mars_data.hemisphere[1].title}}
+            </p>
+        </div>
+        <div class='image_case'>
+            <img class='grid_img' src="{{ mars_data.hemisphere[2].img_url }}">
+
+            <p >
+                {{ mars_data.hemisphere[2].title}}
+            </p>
+        </div>
+        <div class='image_case'>
+            <img  class='grid_img' src="{{ mars_data.hemisphere[3].img_url }}">
+
+            <p >
+                {{ mars_data.hemisphere[3].title}}
+            </p>
+        </div>
+
+    </div>
+
+    <!-- <img
+    src='https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081'
+    class='image_case'> -->
+
+</body>
+
+</html>

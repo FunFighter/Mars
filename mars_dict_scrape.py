@@ -15,7 +15,7 @@ import shutil
 # In[2]:
 def init_browser():
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    return Browser('chrome', **executable_path, headless=False)
 
 
 def mars_data_dict():
@@ -45,11 +45,11 @@ def mars_data_dict():
 
 
     # for result in results:
-    title = soup.find('div', class_='content_title')
+    title = soup.find('div', class_='content_title').text
 
-    body = soup.find('div', class_='article_teaser_body')
+    body = soup.find('div', class_='article_teaser_body').text
 
-    date = soup.find("div", class_="list_date")
+    date = soup.find("div", class_="list_date").text
 
 
     # ### Image Data
@@ -69,14 +69,6 @@ def mars_data_dict():
 
     image = i_soup.find("img", class_="thumb")["src"]
     img_link = "https://jpl.nasa.gov"+image
-    featured_image_url = img_link
-
-
-    # In[8]:
-
-
-#     img_link 
-
 
     # ### Twitter Data
 
@@ -134,13 +126,12 @@ def mars_data_dict():
     # In[16]:
 
 
-    facts_html = facts_df.to_html('facts_html')
+    facts_html = facts_df.to_html()
 
 
     # In[17]:
 
 
-    facts_html
 
 
     # ### Mars Hemispheres
@@ -187,7 +178,7 @@ def mars_data_dict():
         title = p_soup.find('h2',class_='title').text
 
         for a in p_soup.find_all('a'):
-            if a.text == 'Original':
+            if a.text == 'Sample':
                 hemi_dict = {'title' :title,'img_url':a['href']}
                 hemi_img_urls.append(hemi_dict)
 
@@ -208,7 +199,7 @@ def mars_data_dict():
             'image': img_link,
             'twitter' : tweet,
             'table' : facts_html,
-            'hemispheres' : hemi_img_urls
+            'hemisphere' : hemi_img_urls
         }
 
 

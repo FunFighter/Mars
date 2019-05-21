@@ -73,7 +73,14 @@ td {
   border-top: 2px rgba(238, 238, 238, 0.8) solid;
 }
 .big_image{
+  padding: 1rem;
   border-top: 2px rgba(238, 238, 238, 0.8) solid;
+}
+.big_image img{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
 }
 .picture_grid{
   display: flex;
@@ -95,4 +102,8 @@ td {
   align-items: center;
   justify-content: center;
   border-bottom: 4px rgba(238, 238, 238, 0.8) solid;
+}
+.grid_img {
+  max-width: 400px;
+  max-height: 400px;
 }
